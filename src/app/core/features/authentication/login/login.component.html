@@ -1,0 +1,6 @@
+<form (ngSubmit)="login()" [formGroup]="loginForm">
+  <input formControlName="username" pInputText type="text"/>
+  <p-password [feedback]="false" formControlName="password"></p-password>
+  <p-button (onClick)="login()" label="Login"></p-button>
+  {{loginForm.value | json}}
+</form>
