@@ -1,0 +1,171 @@
+$colors: (
+  'red': #e60000,
+  'red-dark': #bd0000,
+  'maroon': #990000,
+  'grey': #4a4d4e,
+  'light-grey': #f4f4f4,
+  'mid-grey': #999999,
+  'dark-grey': #333333,
+  'anthracite': #666666,
+  'platinum': #afafaf,
+  'silver': #cccccc,
+  'aluminium': #ebebeb,
+  'white': #ffffff,
+  'black': #000000,
+  'turquoise': #007c92,
+  'aqua-blue': #00b0ca,
+  'aubergine': #5e2750,
+  'red-violet': #9c2aa0,
+  'spring-green': #a8b400,
+  'digital-green': #428600,
+  'fresh-orange': #eb9700,
+  'lemon-yellow': #fecb00,
+);
+$primaryColor: var(--primaryColor);
+$primaryTextColor: var(--primaryTextColor);
+$primaryDarkColor: var(--primaryDarkColor);
+$primaryDarkerColor: var(--primaryDarkerColor);
+$secondaryColor: var(--secondaryColor);
+$secondaryDarkColor: var(--secondaryDarkColor);
+$secondaryDarkerColor: var(--secondaryDarkerColor);
+$secondaryTextColor: var(--secondaryTextColor);
+$successColor: var(--successColor);
+$successDarkColor: var(--successDarkColor);
+$successTextColor: var(--successTextColor);
+$infoColor: var(--infoColor);
+$infoDarkColor: var(--infoDarkColor);
+$infoTextColor: var(--infoTextColor);
+$warningColor: var(--warningColor);
+$warningDarkColor: var(--warningDarkColor);
+$warningTextColor: var(--warningTextColor);
+$dangerColor: var(--dangerColor);
+$dangerDarkColor: var(--dangerDarkColor);
+$dangerTextColor: var(--dangerTextColor);
+$highlightBg: var(--highlightBg);
+$highlightTextColor: var(--highlightTextColor);
+$textColor: var(--textColor);
+$bodyBgColor: var(--bodyBgColor);
+$surfaceBgColor: var(--surfaceBgColor);
+$topBarBgColor: var(--topBarBgColor);
+$sideBarBgColor: var(--sideBarBgColor);
+$footerBgColor: var(--footerBgColor);
+$footerTextColor: var(--footerTextColor);
+$hoverColor: var(--hoverColor);
+$borderColor: var(--borderColor);
+$headerBgColor: var(--headerBgColor);
+$inputPlaceholderTextColor: var(--inputPlaceholderTextColor);
+$inputError: var(--inputError);
+$inputSuccess: var(--inputSuccess);
+$inputFocus: var(--infoColor);
+$mid-grey: var(--mid-grey);
+$platinum: var(--platinum);
+$aluminium: var(--aluminium);
+// Mandatory Designer Variables
+@import './mixins';
+@import 'variables/general';
+@import 'variables/form';
+@import 'variables/button';
+@import 'variables/panel';
+@import 'variables/data';
+@import 'variables/overlay';
+@import 'variables/message';
+@import 'variables/menu';
+@import 'variables/media';
+@import 'variables/misc';
+@import './components/components';
+@import './common';
+.light {
+  $theme-colors: (
+    primaryColor: map-get($colors, 'red'),
+    primaryDarkColor: map-get($colors, 'red-dark'),
+    primaryDarkerColor: map-get($colors, 'maroon'),
+    primaryTextColor: map-get($colors, 'white'),
+    secondaryColor: map-get($colors, 'anthracite'),
+    secondaryDarkColor: map-get($colors, 'dark-grey'),
+    secondaryDarkerColor: map-get($colors, 'dark-grey'),
+    secondaryTextColor: map-get($colors, 'white'),
+    successColor: map-get($colors, 'digital-green'),
+    successDarkColor: map-get($colors, 'digital-green'),
+    successTextColor: map-get($colors, 'white'),
+    infoColor: map-get($colors, 'aqua-blue'),
+    infoDarkColor: map-get($colors, 'aqua-blue'),
+    infoTextColor: map-get($colors, 'white'),
+    warningColor: map-get($colors, 'fresh-orange'),
+    warningDarkColor: map-get($colors, 'fresh-orange'),
+    warningTextColor: map-get($colors, 'white'),
+    dangerColor: map-get($colors, 'red'),
+    dangerDarkColor: map-get($colors, 'red-dark'),
+    dangerDarkerColor: map-get($colors, 'maroon'),
+    dangerTextColor: map-get($colors, 'white'),
+    textColor: map-get($colors, 'dark-grey'),
+    highlightBg:map-get($colors, 'light-grey'),
+    highlightTextColor:map-get($colors, 'dark-grey'),
+    topBarBgColor:map-get($colors, 'white'),
+    sideBarBgColor:map-get($colors, 'white'),
+    footerBgColor:map-get($colors, 'dark-grey'),
+    footerTextColor:map-get($colors, 'white'),
+    bodyBgColor: map-get($colors, 'light-grey'),
+    surfaceBgColor:map-get($colors, 'white'),
+    hoverColor: map-get($colors, 'light-grey'),
+    borderColor: map-get($colors, 'silver'),
+    headerBgColor: map-get($colors, 'silver'),
+    inputPlaceholderTextColor: map-get($colors, 'platinum'),
+    inputBg:map-get($colors, 'white'),
+    inputIconColor:map-get($colors, 'dark-grey'),
+    inputError: map-get($colors, 'fresh-orange'),
+    inputSuccess: map-get($colors, 'digital-green'),
+    inputFocus: map-get($colors, 'turquoise'),
+  );
+
+  @each $name, $color in $theme-colors {
+    --#{$name}: #{$color};
+  }
+}
+
+.dark {
+  $theme-colors: (
+    primaryColor: map-get($colors, 'digital-green'),
+    primaryDarkColor: map-get($colors, 'fresh-orange'),
+    primaryDarkerColor: map-get($colors, 'maroon'),
+    primaryTextColor: map-get($colors, 'white'),
+    secondaryColor: map-get($colors, 'anthracite'),
+    secondaryDarkColor: map-get($colors, 'dark-grey'),
+    secondaryDarkerColor: map-get($colors, 'dark-grey'),
+    secondaryTextColor: map-get($colors, 'white'),
+    successColor: map-get($colors, 'digital-green'),
+    successDarkColor: map-get($colors, 'digital-green'),
+    successTextColor: map-get($colors, 'white'),
+    infoColor: map-get($colors, 'aqua-blue'),
+    infoDarkColor: map-get($colors, 'aqua-blue'),
+    infoTextColor: map-get($colors, 'white'),
+    warningColor: map-get($colors, 'fresh-orange'),
+    warningDarkColor: map-get($colors, 'fresh-orange'),
+    warningTextColor: map-get($colors, 'white'),
+    dangerColor: map-get($colors, 'red'),
+    dangerDarkColor: map-get($colors, 'red-dark'),
+    dangerDarkerColor: map-get($colors, 'maroon'),
+    dangerTextColor: map-get($colors, 'white'),
+    textColor: map-get($colors, 'dark-grey'),
+    highlightBg:map-get($colors, 'light-grey'),
+    highlightTextColor:map-get($colors, 'dark-grey'),
+    topBarBgColor:map-get($colors, 'white'),
+    sideBarBgColor:map-get($colors, 'white'),
+    footerBgColor:map-get($colors, 'dark-grey'),
+    footerTextColor:map-get($colors, 'white'),
+    bodyBgColor: map-get($colors, 'light-grey'),
+    surfaceBgColor:map-get($colors, 'white'),
+    hoverColor: map-get($colors, 'light-grey'),
+    borderColor: map-get($colors, 'silver'),
+    headerBgColor: map-get($colors, 'silver'),
+    inputPlaceholderTextColor: map-get($colors, 'platinum'),
+    inputBg:map-get($colors, 'white'),
+    inputIconColor:map-get($colors, 'dark-grey'),
+    inputError: map-get($colors, 'fresh-orange'),
+    inputSuccess: map-get($colors, 'digital-green'),
+    inputFocus: map-get($colors, 'turquoise'),
+  );
+  @each $name, $color in $theme-colors {
+    --#{$name}: #{$color};
+  }
+}
+

@@ -1,0 +1,12 @@
+@use "sass:math";
+
+@function toRem($value, $screen: desktop) {
+  $fontBase: 16;
+  @if $screen == mobile {
+    $fontBase: 14
+  } @else if $screen == desktop {
+    $fontBase: 16;
+  }
+  $remValue: math.div($value, $fontBase) + rem;
+  @return $remValue;
+}

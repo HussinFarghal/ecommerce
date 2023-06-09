@@ -1,0 +1,196 @@
+//margin-block-start = margin-top
+//margin-block-end = margin-bottom
+//margin-inline-start = margin-left
+//margin-inline-end = margin-right
+$utilities: map-merge(
+    $utilities,
+    (
+      'cursor': (
+        property: cursor,
+        class: cursor,
+        responsive: true,
+        values: auto pointer grab,
+      ),
+      'pointer-events': (
+        property: pointer-events,
+        class: pointer-events,
+        responsive: true,
+        values: auto none,
+      ),
+      "margin": (
+        responsive: true,
+        property: margin,
+        class: m,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-x": (
+        responsive: true,
+        property: margin-inline-end margin-inline-start,
+        class: mx,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-y": (
+        responsive: true,
+        property: margin-block-start margin-block-end,
+        class: my,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-top": (
+        responsive: true,
+        property: margin-block-start,
+        class: mt,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-end": (
+        responsive: true,
+        property: margin-inline-end,
+        class: me,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-bottom": (
+        responsive: true,
+        property: margin-block-end,
+        class: mb,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-start": (
+        responsive: true,
+        property: margin-inline-start,
+        class: ms,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      // Negative margin utilities
+      "negative-margin": (
+        responsive: true,
+        property: margin,
+        class: m,
+        values: $negative-spacers
+      ),
+      "negative-margin-x": (
+        responsive: true,
+        property: margin-inline-end margin-inline-start,
+        class: mx,
+        values: $negative-spacers
+      ),
+      "negative-margin-y": (
+        responsive: true,
+        property: margin-block-start margin-block-end,
+        class: my,
+        values: $negative-spacers
+      ),
+      "negative-margin-top": (
+        responsive: true,
+        property: margin-block-start,
+        class: mt,
+        values: $negative-spacers
+      ),
+      "negative-margin-end": (
+        responsive: true,
+        property: margin-inline-end,
+        class: me,
+        values: $negative-spacers
+      ),
+      "negative-margin-bottom": (
+        responsive: true,
+        property: margin-block-end,
+        class: mb,
+        values: $negative-spacers
+      ),
+      "negative-margin-start": (
+        responsive: true,
+        property: margin-inline-start,
+        class: ms,
+        values: $negative-spacers
+      ),
+      // Padding utilities
+      "padding": (
+        responsive: true,
+        property: padding,
+        class: p,
+        values: $spacers
+      ),
+      "padding-x": (
+        responsive: true,
+        property: padding-inline-start padding-inline-end,
+        class: px,
+        values: $spacers
+      ),
+      "padding-y": (
+        responsive: true,
+        property: padding-block-start padding-block-end,
+        class: py,
+        values: $spacers
+      ),
+      "padding-top": (
+        responsive: true,
+        property: padding-block-start,
+        class: pt,
+        values: $spacers
+      ),
+      "padding-end": (
+        responsive: true,
+        property: padding-inline-end,
+        class: pe,
+        values: $spacers
+      ),
+      "padding-bottom": (
+        responsive: true,
+        property: padding-block-end,
+        class: pb,
+        values: $spacers
+      ),
+      "padding-start": (
+        responsive: true,
+        property: padding-inline-start,
+        class: ps,
+        values: $spacers
+      ),
+      "border": (
+        property: border,
+        values: (
+          null: $border-width solid $borderColor,
+          0: 0,
+        )
+      ),
+      "border-top": (
+        property: border-top,
+        values: (
+          null: $border-width solid $borderColor,
+          0: 0,
+        )
+      ),
+      "border-end": (
+        property: border-right,
+        class: border-end,
+        values: (
+          null: $border-width solid $borderColor,
+          0: 0,
+        )
+      ),
+      "border-bottom": (
+        property: border-bottom,
+        values: (
+          null: $border-width solid $borderColor,
+          0: 0,
+        )
+      ),
+      "border-start": (
+        property: border-left,
+        class: border-start,
+        values: (
+          null: $border-width solid $borderColor,
+          0: 0,
+        )
+      ),
+      "border-color": (
+        property: border-color,
+        class: border,
+        values: map-merge($colors, ("white": $white))
+      ),
+      "border-width": (
+        property: border-width,
+        class: border,
+        values: $border-widths
+      ),
+    ),
+);
