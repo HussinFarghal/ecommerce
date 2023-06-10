@@ -6,12 +6,7 @@ export const API_CONFIG = {
       `${environment.authAPIUrl}/auth/login`,
   },
   register: {
-    url: (
-      name: string,
-      email: string,
-      password: string,
-      avatar: string,
-      role: string
-    ) => `${environment.authAPIUrl}/users`,
+    url: (name: string, email: string, password: string, avatar: string) =>
+      `${environment.authAPIUrl}/users`,
   },
 };

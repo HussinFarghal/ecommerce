@@ -4,7 +4,17 @@
       <input formControlName="username" pInputText type="text"/>
       <p-password [feedback]="true" [toggleMask]="true" appendTo="body" formControlName="password"></p-password>
       <p-button (onClick)="login()" label="Login"></p-button>
+      <p-button (onClick)="register()" label="register"></p-button>
       {{loginForm.value | json}}
     </form>
+    <div *ngIf="errorMessages.length > 0">
+      <h1>Error occurred: </h1>
+      <ul>
+        <li *ngFor="let errorMessage of errorMessages">
+          {{errorMessage}}
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>
