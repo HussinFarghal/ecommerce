@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { UserToken } from '../../../models/user-token';
 import { catchError, tap, throwError } from 'rxjs';
+import { StorageService } from '../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public errorMessages: string[] = [];
 
-  constructor(private _authService: AuthService) {}
+  constructor(
+    private _authService: AuthService,
+    private _storageService: StorageService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -27,7 +31,13 @@ export class LoginComponent implements OnInit {
     this._authService
       .login(username, password)
       .pipe(
-        tap((response: UserToken) => {}),
+        tap((response: UserToken) => {
+          this._storageService.setLocalStorage('token', response.access_token);
+          this._storageService.setLocalStorage(
+            'refresh_token',
+            response.refresh_token
+          );
+        }),
         catchError((error) => {
           console.log('error =', error);
           // Handle the error as needed

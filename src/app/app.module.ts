@@ -8,6 +8,8 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './core/features/authentication/auth.service';
+import { StorageService } from './core/services/storage/storage.service';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +20,13 @@ import { AuthService } from './core/features/authentication/auth.service';
     AppRoutingModule,
     FooterComponent,
     HeaderComponent,
+    NgxWebstorageModule.forRoot({
+      prefix: '',
+      separator: '',
+      caseSensitive: false,
+    }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, StorageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
