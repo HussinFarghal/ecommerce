@@ -40,11 +40,11 @@ $menuWidth: 12.5rem;
 
 /// Background of a menu
 /// @group menu
-$menuBg: #ffffff;
+$menuBg: $topBarBgColor;
 
 /// Border of a menu
 /// @group menu
-$menuBorder: 1px solid #dee2e6;
+$menuBorder: none;
 
 /// Text color of a menu
 /// @group menu
@@ -52,7 +52,7 @@ $menuTextColor: $textColor;
 
 /// Padding of a menuitem
 /// @group menu
-$menuitemPadding: .75rem 1rem;
+$menuitemPadding: .5rem 1rem;
 
 /// Border radius of a menuitem
 /// @group menu
@@ -64,7 +64,7 @@ $menuitemTextColor: $textColor;
 
 /// Icon color of a menuitem
 /// @group menu
-$menuitemIconColor: $textSecondaryColor;
+$menuitemIconColor: $textColor;
 
 /// Text color of a menuitrem in hover state
 /// @group menu
@@ -72,11 +72,11 @@ $menuitemTextHoverColor: $textColor;
 
 /// Icon color of a menuitrem in hover state
 /// @group menu
-$menuitemIconHoverColor: $textSecondaryColor;
+$menuitemIconHoverColor: $textColor;
 
 /// Background of a menuitrem in hover state
 /// @group menu
-$menuitemHoverBg: #e9ecef;
+$menuitemHoverBg: $hoverColor;
 
 /// Text color of a menuitrem in active state
 /// @group menu
@@ -84,15 +84,15 @@ $menuitemTextActiveColor: $textColor;
 
 /// Icon color of a menuitrem in active state
 /// @group menu
-$menuitemIconActiveColor: $textSecondaryColor;
+$menuitemIconActiveColor: $textColor;
 
 /// Background of a menuitrem in active state
 /// @group menu
-$menuitemActiveBg: #e9ecef;
+$menuitemActiveBg: $hoverColor;
 
 /// Font size of an icon indicating the itrem has a submenu
 /// @group menu
-$menuitemSubmenuIconFontSize: .875rem;
+$menuitemSubmenuIconFontSize: $fontSize;
 
 /// Margin of a submenu header
 /// @group menu
@@ -104,7 +104,7 @@ $submenuHeaderPadding: .75rem 1rem;
 
 /// Background of a submenu header
 /// @group menu
-$submenuHeaderBg: #ffffff;
+$submenuHeaderBg: $hoverColor;
 
 /// Text color of a submenu header
 /// @group menu
@@ -176,11 +176,11 @@ $breadcrumbSeparatorColor: $menuitemTextColor;
 
 /// Padding of a horizontal menu e.g. menubar
 /// @group menu
-$horizontalMenuPadding: .5rem;
+$horizontalMenuPadding: .2rem;
 
 /// Background of a horizontal menu e.g. menubar
 /// @group menu
-$horizontalMenuBg: #f8f9fa;
+$horizontalMenuBg: $topBarBgColor;
 
 /// Border of a horizontal menu e.g. menubar
 /// @group menu

@@ -1,5 +1,5 @@
 //Input
-@import 'input/autocomplete';
+//@import 'input/autocomplete';
 //@import 'input/calendar';
 //@import 'input/cascadeselect';
 //@import 'input/checkbox';
@@ -7,8 +7,8 @@
 //@import 'input/colorpicker';
 //@import 'input/dropdown';
 //@import 'input/editor';
-@import 'input/inputgroup';
-@import 'input/inputmask';
+//@import 'input/inputgroup';
+//@import 'input/inputmask';
 //@import 'input/inputnumber';
 //@import 'input/inputswitch';
 @import 'input/inputtext';
@@ -66,10 +66,10 @@
 //@import 'menu/breadcrumb';
 //@import 'menu/contextmenu';
 //@import 'menu/dock';
-//@import 'menu/megamenu';
-//@import 'menu/menu';
-//@import 'menu/menubar';
-//@import 'menu/panelmenu';
+@import 'menu/megamenu';
+@import 'menu/menu';
+@import 'menu/menubar';
+@import 'menu/panelmenu';
 //@import 'menu/slidemenu';
 //@import 'menu/steps';
 //@import 'menu/tabmenu';
@@ -85,7 +85,7 @@
 //@import 'multimedia/image';
 //
 ////Misc
-//@import 'misc/avatar';
+@import 'misc/avatar';
 //@import 'misc/badge';
 //@import 'misc/blockui';
 //@import 'misc/chip';

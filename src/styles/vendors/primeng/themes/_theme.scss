@@ -19,47 +19,7 @@ $colors: (
   'spring-green': #a8b400,
   'digital-green': #428600,
   'fresh-orange': #eb9700,
-  'lemon-yellow': #fecb00,
 );
-$primaryColor: var(--primaryColor);
-$primaryTextColor: var(--primaryTextColor);
-$primaryDarkColor: var(--primaryDarkColor);
-$primaryDarkerColor: var(--primaryDarkerColor);
-$secondaryColor: var(--secondaryColor);
-$secondaryDarkColor: var(--secondaryDarkColor);
-$secondaryDarkerColor: var(--secondaryDarkerColor);
-$secondaryTextColor: var(--secondaryTextColor);
-$successColor: var(--successColor);
-$successDarkColor: var(--successDarkColor);
-$successTextColor: var(--successTextColor);
-$infoColor: var(--infoColor);
-$infoDarkColor: var(--infoDarkColor);
-$infoTextColor: var(--infoTextColor);
-$warningColor: var(--warningColor);
-$warningDarkColor: var(--warningDarkColor);
-$warningTextColor: var(--warningTextColor);
-$dangerColor: var(--dangerColor);
-$dangerDarkColor: var(--dangerDarkColor);
-$dangerTextColor: var(--dangerTextColor);
-$highlightBg: var(--highlightBg);
-$highlightTextColor: var(--highlightTextColor);
-$textColor: var(--textColor);
-$bodyBgColor: var(--bodyBgColor);
-$surfaceBgColor: var(--surfaceBgColor);
-$topBarBgColor: var(--topBarBgColor);
-$sideBarBgColor: var(--sideBarBgColor);
-$footerBgColor: var(--footerBgColor);
-$footerTextColor: var(--footerTextColor);
-$hoverColor: var(--hoverColor);
-$borderColor: var(--borderColor);
-$headerBgColor: var(--headerBgColor);
-$inputPlaceholderTextColor: var(--inputPlaceholderTextColor);
-$inputError: var(--inputError);
-$inputSuccess: var(--inputSuccess);
-$inputFocus: var(--infoColor);
-$mid-grey: var(--mid-grey);
-$platinum: var(--platinum);
-$aluminium: var(--aluminium);
 // Mandatory Designer Variables
 @import './mixins';
 @import 'variables/general';

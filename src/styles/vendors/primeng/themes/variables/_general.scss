@@ -1,3 +1,4 @@
+@import "../../../../theme-vars";
 /// Font of the theme
 /// @group general
 $fontFamily: 'vf-en', 'vf-ar';
@@ -17,7 +18,7 @@ $textColor: $textColor;
 
 /// Secondary text color
 /// @group general
-$textSecondaryColor: #6c757d;
+$textSecondaryColor: $secondaryTextColor;
 
 /// Background of a highlighted item
 /// @group general

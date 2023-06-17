@@ -192,5 +192,10 @@ $utilities: map-merge(
         class: border,
         values: $border-widths
       ),
+      "sona": (
+        property: color,
+        class: sona,
+        values: red
+      ),
     ),
 );

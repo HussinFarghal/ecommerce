@@ -1,3 +1,36 @@
-<p>header works!</p>
-<p-button [routerLink]="['auth']" icon="pi pi-check" label="Login"></p-button>
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p-megaMenu [model]="menuItems" styleClass="d-flex menu">
+          <ng-template pTemplate="start">
+            <a routerLink="/">
+              <img alt="" id="logo" routerLink="/" src="./assets/shop-svgrepo-com.svg"/>
+            </a>
+          </ng-template>
+          <ng-template pTemplate="end">
+            <ng-container *ngIf="!notLogin; else notLoggedInContent">
+              <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right" label="Login"
+                        styleClass="p-button-text"></p-button>
+            </ng-container>
+            <ng-template #notLoggedInContent>
+              <div class="d-flex align-items-center">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle"
+                          size="large" styleClass="my-1 me-3 d-flex"></p-avatar>
+                <p-button (click)="profileMenu.toggle($event)" icon="pi pi-angle-down" iconPos="right"
+                          label="Hussien" styleClass="p-button-link"></p-button>
+                <p-menu #profileMenu [model]="profileMenuModel" [popup]="true"></p-menu>
+                <p-button icon="pi pi-sign-out" iconPos="right" label="Logout" styleClass="p-button-text"></p-button>
+              </div>
+
+            </ng-template>
+          </ng-template>
+        </p-megaMenu>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 

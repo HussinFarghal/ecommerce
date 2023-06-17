@@ -1,0 +1,19 @@
+@import 'src/styles/_theme-vars.scss';
+@import "src/styles/utils/_functions.scss";
+
+::ng-deep #header {
+  background-color: $topBarBgColor;
+
+  .menu {
+    .p-megamenu-start {
+      display: flex;
+      align-items: center;
+
+      #logo {
+        width: toRem(35);
+        height: toRem(35);
+        margin-right: toRem(20);
+      }
+    }
+  }
+}
