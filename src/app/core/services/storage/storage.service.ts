@@ -71,4 +71,10 @@ export class StorageService {
   public onLocalSessionChange(key?: string): Observable<string> {
     return this.sessionStorageService.observe(key);
   }
+
+  public clearAll(): void {
+    this.clearAllLocalStorage();
+    this.clearAllSessionStorage();
+    this.cookieService.deleteAll();
+  }
 }

@@ -3,12 +3,16 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { UserToken } from '../../models/user-token';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from 'src/configs/api.config';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _storageService: StorageService
+  ) {}
 
   public login(
     email: string,
@@ -51,5 +55,9 @@ export class AuthService {
           return throwError({ message, statusCode, error });
         })
       );
+  }
+
+  logout() {
+    this._storageService.clearAll();
   }
 }
