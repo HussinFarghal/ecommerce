@@ -9,4 +9,7 @@ export const API_CONFIG = {
     url: (name: string, email: string, password: string, avatar: string) =>
       `${environment.authAPIUrl}/users`,
   },
+  profile: {
+    url: `${environment.authAPIUrl}/auth/profile`,
+  },
 };

@@ -4,12 +4,12 @@
       <div class="col-12">
         <p-megaMenu [model]="menuItems" styleClass="d-flex menu">
           <ng-template pTemplate="start">
-            <a routerLink="/">
+            <a class="d-flex" routerLink="/">
               <img alt="" id="logo" routerLink="/" src="./assets/shop-svgrepo-com.svg"/>
             </a>
           </ng-template>
           <ng-template pTemplate="end">
-            <ng-container *ngIf="!notLogin; else notLoggedInContent">
+            <ng-container *ngIf="!isUserLoggedIn; else notLoggedInContent">
               <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right" label="Login"
                         styleClass="p-button-text"></p-button>
             </ng-container>
@@ -20,7 +20,8 @@
                 <p-button (click)="profileMenu.toggle($event)" icon="pi pi-angle-down" iconPos="right"
                           label="Hussien" styleClass="p-button-link"></p-button>
                 <p-menu #profileMenu [model]="profileMenuModel" [popup]="true"></p-menu>
-                <p-button icon="pi pi-sign-out" iconPos="right" label="Logout" styleClass="p-button-text"></p-button>
+                <p-button (click)="logout()" icon="pi pi-sign-out" iconPos="right" label="Logout"
+                          styleClass="p-button-text"></p-button>
               </div>
             </ng-template>
           </ng-template>

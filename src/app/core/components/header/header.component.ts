@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { StorageService } from '../../services/storage/storage.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../features/authentication/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,15 +16,22 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
   public menuItems: MegaMenuItem[] | undefined = [];
-  notLogin = false;
-  profileMenuModel: MenuItem[] | undefined = [];
+  public profileMenuModel: MenuItem[] | undefined = [];
+  public isUserLoggedIn: boolean = false;
 
-  constructor(private _storageService: StorageService) {}
+  constructor(
+    private _storageService: StorageService,
+    private _userService: UserService,
+    private _authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    // this._storageService.onLocalStorageChange('token').subscribe((data) => {
-    //   console.log('data From Header =', data);
-    // });
+    this.isUserLoggedIn = this._userService.isLoggedUser$.value;
+    this._userService.isLoggedUser$.subscribe((isLoggedUser) => {
+      console.log('isLoggedUser =', isLoggedUser);
+      this.isUserLoggedIn = isLoggedUser;
+    });
+
     this.menuItems = [
       {
         label: 'Videos',
@@ -171,5 +180,9 @@ export class HeaderComponent implements OnInit {
         ],
       },
     ];
+  }
+
+  public logout() {
+    this._authService.logout();
   }
 }
