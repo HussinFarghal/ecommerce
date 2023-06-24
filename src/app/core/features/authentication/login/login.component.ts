@@ -7,39 +7,34 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public errorMessages: string[] = [];
 
-  constructor(
-    private _authService: AuthService,
-    private _storageService: StorageService,
-    private _router: Router
-  ) {}
+  constructor(private _authService: AuthService, private _storageService: StorageService, private _router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl(null),
-      password: new FormControl(null),
+      password: new FormControl(null)
     });
   }
 
   public login() {
     const { username, password } = this.loginForm.value;
     this._authService.login(username, password).subscribe(
-      (response) => {
-        this._router.navigate(['/']).then();
+      user => {
+        console.log('user =', user);
+        if (user) {
+          this._router.navigate(['/']).then();
+          return;
+        }
       },
-      (error) => {
+      error => {
         console.log('error =', error);
       }
     );
-  }
-
-  public register() {
-    const { username, password } = this.loginForm.value;
-    this._authService.register(username, password, '', '').subscribe();
   }
 }

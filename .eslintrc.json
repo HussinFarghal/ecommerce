@@ -24,6 +24,12 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
+        "prettier/prettier": [
+          "off",
+          {
+            "ignoreTemplateLiterals": true
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {

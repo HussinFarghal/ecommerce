@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './core/features/authentication/auth.service';
 import { StorageService } from './core/services/storage/storage.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { UserService } from './core/services/user/user.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,10 +24,10 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     NgxWebstorageModule.forRoot({
       prefix: '',
       separator: '',
-      caseSensitive: false,
-    }),
+      caseSensitive: false
+    })
   ],
-  providers: [AuthService, StorageService],
-  bootstrap: [AppComponent],
+  providers: [AuthService, StorageService, UserService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

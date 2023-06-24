@@ -9,16 +9,16 @@
             </a>
           </ng-template>
           <ng-template pTemplate="end">
-            <ng-container *ngIf="!isUserLoggedIn; else notLoggedInContent">
+            <ng-container *ngIf="!isLogged; else notLoggedInContent">
               <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right" label="Login"
                         styleClass="p-button-text"></p-button>
             </ng-container>
             <ng-template #notLoggedInContent>
               <div class="d-flex align-items-center">
-                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle"
+                <p-avatar [image]="profileImg" shape="circle"
                           size="large" styleClass="my-1 me-3 d-flex"></p-avatar>
                 <p-button (click)="profileMenu.toggle($event)" icon="pi pi-angle-down" iconPos="right"
-                          label="Hussien" styleClass="p-button-link"></p-button>
+                          [label]="userName" styleClass="p-button-link"></p-button>
                 <p-menu #profileMenu [model]="profileMenuModel" [popup]="true"></p-menu>
                 <p-button (click)="logout()" icon="pi pi-sign-out" iconPos="right" label="Logout"
                           styleClass="p-button-text"></p-button>
