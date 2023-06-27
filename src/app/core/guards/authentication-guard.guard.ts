@@ -10,12 +10,6 @@ export class AuthenticationGuardGuard implements CanActivate {
   constructor(private _userService: UserService, private _router: Router, private _storageService: StorageService) {}
 
   canActivate(): boolean {
-    if (this._userService.getLoggedIn()) {
-      return true;
-    } else {
-      this._storageService.clearAll();
-      this._router.navigate(['/login']).then();
-      return false;
-    }
+    return this._userService.isUserLoggedIn;
   }
 }

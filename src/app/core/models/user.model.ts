@@ -6,4 +6,5 @@ export class User {
   gender: string;
   image: string;
   token: string;
+  isAdmin: boolean;
 }

@@ -1,1 +1,1 @@
-export const ADMINS_LIST = ['ckensleyk'];
+export const ADMINS_LIST = ['ckensleyk', 'acharlota'];

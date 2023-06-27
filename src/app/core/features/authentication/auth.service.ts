@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from 'src/configs/api.config';
 import { StorageService } from '../../services/storage/storage.service';
@@ -21,41 +21,37 @@ export class AuthService {
 
   public login(username: string, password: string) {
     // customer
-    // "username": "aeatockj"
-    // "password": "szWAG6hc"
+    // "username": "atuny0"
+    // "password": "9uQFF1Lh"
     // admin
-    // "username": "ckensleyk",
-    // "password": "tq7kPXyf",
+    // "username": "acharlota",
+    // "password": "M9lbMdydMN",
     return this._http
       .post<User>(API_CONFIG.login.url(username, password), {
         username,
         password
       })
       .pipe(
-        map(user => {
-          if (ADMINS_LIST.includes(user.username)) {
-            this._userService.setIsAdmin(true);
-          } else {
-            this._userService.setIsAdmin(false);
+        tap(user => {
+          if (user) {
+            this._userService.isUserLoggedIn = true;
+            this._storageService.setLocalStorage('token', user.token);
+            this._storageService.setLocalStorage('isUserLoggedIn', JSON.stringify(this._userService.isUserLoggedIn));
+            this._storageService.setLocalStorage('isAdmin', JSON.stringify(ADMINS_LIST.includes(user.username)));
+            this._userService.isAdmin = ADMINS_LIST.includes(user.username);
+            this._userService.userID = user.id;
+            this._userService.fullName = `${user.firstName} ${user.lastName}`;
+            this._userService.profileImage = user.image;
+            return;
           }
-          this._storageService.setLocalStorage('id', JSON.stringify(user.id));
-          this._storageService.setLocalStorage('firstName', user.firstName);
-          this._storageService.setLocalStorage('lastName', user.lastName);
-          this._storageService.setLocalStorage('gender', user.gender);
-          this._storageService.setLocalStorage('image', user.image);
-          this._storageService.setLocalStorage('token', user.token);
-          this._storageService.setLocalStorage('isAdmin', JSON.stringify(this._userService.getIsAdmin()));
-          this._userService.setUser(user);
-          this._userService.setLoggedIn(true);
-          return user;
         })
       );
   }
 
   logout() {
     this._storageService.clearAll();
-    this._userService.setLoggedIn(false);
-    this._userService.setUser(null);
-    this._router.navigate(['auth']).then();
+    this._userService.isUserLoggedIn = false;
+    this._userService.isAdmin = false;
+    this._router.navigate(['/']).then();
   }
 }

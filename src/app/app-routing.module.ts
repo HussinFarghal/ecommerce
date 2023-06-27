@@ -5,29 +5,21 @@ const routes: Routes = [
   {
     path: 'admin',
     redirectTo: 'admin/dashboard',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./features/customer/landing/landing.module').then(
-        (m) => m.LandingModule
-      ),
+    loadChildren: () => import('./features/customer/landing/landing.module').then(m => m.LandingModule),
+    canActivate: []
   },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./features/admin/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule
-      ),
+    loadChildren: () => import('./features/admin/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./core/features/authentication/authentication.module').then(
-        (m) => m.AuthenticationModule
-      ),
-  },
+    loadChildren: () => import('./core/features/authentication/authentication.module').then(m => m.AuthenticationModule)
+  }
 ];
 
 @NgModule({
