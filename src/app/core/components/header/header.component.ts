@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StorageService } from '../../services/storage/storage.service';
@@ -6,7 +6,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../features/authentication/auth.service';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,34 +16,59 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public menuItems: MegaMenuItem[] = [];
   public profileMenuModel: MenuItem[] = [];
   public isUserLoggedIn: boolean;
   public isUserAdmin: boolean;
   public fullName: string;
   public image: string;
-  private isUserLoggedInSub: Subscription;
-  private isUserAdminSub: Subscription;
-  private fullNameSub: Subscription;
-  private imageSub: Subscription;
-  private userID: number;
+  private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private _storageService: StorageService, private _userService: UserService, private _authService: AuthService) {}
 
   ngOnInit(): void {
     this.fullName = this._userService.fullName;
-    this.fullNameSub = this._userService.fullName$.subscribe(value => {
-      this.fullName = value;
-    });
     this.image = this._userService.profileImage;
-    this.imageSub = this._userService.profileImage$.subscribe(value => {
-      this.image = value;
-    });
     this.isUserLoggedIn = this._userService.isUserLoggedIn;
-    this.isUserLoggedInSub = this._userService.isUserLoggedIn$.subscribe(value => {
-      this.isUserLoggedIn = value || this.getIsUserLoggedInFromStorage() === 'true';
-    });
+    this.isUserAdmin = this._userService.isAdmin ?? this._storageService.getLocalStorage('isAdmin') === 'true';
+    combineLatest([
+      this._userService.fullName$,
+      this._userService.profileImage$,
+      this._userService.isUserLoggedIn$,
+      this._userService.isAdmin$
+    ])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(([fullName, image, isUserLoggedIn, isAdmin]) => {
+        this.fullName = fullName;
+        this.image = image;
+        this.isUserLoggedIn = isUserLoggedIn || this._storageService.getLocalStorage('isUserLoggedIn') === 'true';
+        this.isUserAdmin = isAdmin || this._storageService.getLocalStorage('isAdmin') === 'true';
+        console.log('fullName', fullName);
+        this.profileMenuModel = [
+          {
+            items: [
+              {
+                label: 'Settings',
+                icon: 'pi pi-cog',
+                routerLink: ['/settings']
+              },
+              {
+                label: 'Admin Panel',
+                icon: 'pi pi-key',
+                routerLink: ['/admin'],
+                visible: this.isUserAdmin
+              },
+              {
+                label: 'Profile',
+                icon: 'pi pi-user',
+                routerLink: ['/profile']
+              }
+            ]
+          }
+        ];
+      });
+    // console.log('this.isUserAdmin', this.isUserAdmin);
 
     this.menuItems = [
       {
@@ -161,34 +186,14 @@ export class HeaderComponent implements OnInit {
         ]
       }
     ];
-    this.profileMenuModel = [
-      {
-        items: [
-          {
-            label: 'Settings',
-            icon: 'pi pi-cog',
-            routerLink: ['/settings']
-          },
-          {
-            label: 'Admin Panel',
-            icon: 'pi pi-key',
-            routerLink: ['/admin']
-          },
-          {
-            label: 'Profile',
-            icon: 'pi pi-user',
-            routerLink: ['/profile']
-          }
-        ]
-      }
-    ];
-  }
-
-  private getIsUserLoggedInFromStorage(): string {
-    return this._storageService.getLocalStorage('isUserLoggedIn');
   }
 
   public logout() {
     this._authService.logout();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
