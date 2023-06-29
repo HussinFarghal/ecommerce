@@ -42,6 +42,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export class AppModule {}
 
 // required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './configs/i18n/', '.json');
+class TranslationService {
+}
+
+// Create a custom loader to use TranslationService for fetching translations
+export function HttpLoaderFactory(http: HttpClient, translationService: TranslationService) {
+  return new TranslateHttpLoader(http, '', translationService);
 }
