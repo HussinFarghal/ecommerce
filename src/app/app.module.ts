@@ -13,26 +13,25 @@ import {UserService} from './core/services/user/user.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslationService} from './shared/translation-service/translation.service';
+import {TranslationLoader} from './core/translation/translation-loader';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, TranslateModule.forRoot({
-    defaultLanguage: 'en', loader: {
-      provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient, TranslationService]
-    }
-  }), AppRoutingModule, FooterComponent, HeaderComponent, NgxWebstorageModule.forRoot({
-    prefix: '', separator: '', caseSensitive: false
-  })],
+  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (translationService: TranslationService) =>
+          new TranslationLoader(translationService),
+        deps: [TranslationService]
+      }
+    }),
+    AppRoutingModule, FooterComponent, HeaderComponent, NgxWebstorageModule.forRoot({
+      prefix: '', separator: '', caseSensitive: false
+    })],
   providers: [AuthService, StorageService, UserService, TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-}
-
-// required for AOT compilation
-
-
-// Create a custom loader to use TranslationService for fetching translations
-export function HttpLoaderFactory(http: HttpClient, translationService: TranslationService) {
-  return new TranslateHttpLoader(http, '', translationService as any);
 }
