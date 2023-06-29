@@ -6,9 +6,9 @@ import {API_CONFIG} from '../../../configs/api.config';
 @Injectable({
   providedIn: 'root'
 })
-export class TranslationServiceService {
+export class TranslationService {
   private cache: { [key: string]: any } = {};
-
+  private timeStamp: number;
   constructor(private http: HttpClient) {
   }
 
@@ -16,7 +16,7 @@ export class TranslationServiceService {
     if (this.cache[lang]) {
       return of(this.cache[lang]);
     } else {
-      return this.http.get(API_CONFIG.login.url()).pipe(
+      return this.http.get(`${API_CONFIG.content.url}${lang}.json?timestamp=${this.generateTimeStamp()}`).pipe(
         map((res: any) => {
           this.cache[lang] = res;
           return res;
@@ -24,5 +24,8 @@ export class TranslationServiceService {
         catchError(() => of(null))
       );
     }
+  }
+  private generateTimeStamp(): number {
+    return new Date().getTime();
   }
 }
