@@ -5,14 +5,14 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './core/features/authentication/auth.service';
 import { StorageService } from './core/services/storage/storage.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { UserService } from './core/services/user/user.service';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslationLoader} from "./core/translation/translation-loader";
-import {TranslationService} from "./shared/translation-service/translation.service";
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslationLoader } from './core/translation/translation-loader';
+import { TranslationService } from './shared/translation-service/translation.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +37,7 @@ import {TranslationService} from "./shared/translation-service/translation.servi
       caseSensitive: false
     })
   ],
-  providers: [AuthService, StorageService, UserService],
+  providers: [AuthService, StorageService, UserService, TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
