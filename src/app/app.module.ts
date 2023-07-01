@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AuthService } from './core/features/authentication/auth.service';
 import { StorageService } from './core/services/storage/storage.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { UserService } from './core/services/user/user.service';
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslationLoader} from "./core/translation/translation-loader";
+import {TranslationService} from "./shared/translation-service/translation.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,11 @@ import { TranslateModule } from '@ngx-translate/core';
     BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslationLoader,
+        deps: [TranslationService, HttpClient]
+      },
       defaultLanguage: 'en'
     }),
     AppRoutingModule,

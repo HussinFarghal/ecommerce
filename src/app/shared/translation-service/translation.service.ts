@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {API_CONFIG} from '../../../configs/api.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  constructor(private translateService: TranslateService, private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
+
+  getTranslations(lang: string): Observable<any> {
+    return this.http.get<string>(API_CONFIG.content.url(lang));
+
+  }
 }
