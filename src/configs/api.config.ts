@@ -5,6 +5,7 @@ export const API_CONFIG = {
     url: (username: string, password: string) => `${environment.apiBaseUrl}/auth/login`
   },
   content: {
-    url: 'https://raw.githubusercontent.com/HussinFarghal/ecommerce/master/content/'
+    url: (lang: string) =>
+      `https://raw.githubusercontent.com/HussinFarghal/ecommerce/master/content/${lang}.json?timestamp=${new Date().getTime()}`
   }
 };
