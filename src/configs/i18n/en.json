@@ -22,7 +22,10 @@
           "/profile"
         ]
       }
-    ]
+    ],
+    "logIn": "Log in",
+    "logOut": "Log out",
+    "btnLang": "عربي"
   },
   "customer": {
     "landing": {

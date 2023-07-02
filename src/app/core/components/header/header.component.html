@@ -9,8 +9,11 @@
             </a>
           </ng-template>
           <ng-template pTemplate="end">
+            <p-button (click)="changeLanguage(currentLanguage)" label="{{'header.btnLang' | translate}}"
+                      styleClass="p-button p-button-text"></p-button>
             <ng-container *ngIf="!isUserLoggedIn">
-              <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right" label="Login"
+              <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right"
+                        label="{{'header.logIn' | translate}}"
                         styleClass="p-button-text"></p-button>
             </ng-container>
             <ng-container *ngIf="isUserLoggedIn">
@@ -20,7 +23,8 @@
                 <p-button (click)="profileMenu.toggle($event)" icon="pi pi-angle-down" iconPos="right"
                           [label]="fullName" styleClass="p-button-link"></p-button>
                 <p-menu #profileMenu [model]="profileMenuModel" [popup]="true"></p-menu>
-                <p-button (click)="logout()" icon="pi pi-sign-out" iconPos="right" label="Logout"
+                <p-button (click)="logout()" icon="pi pi-sign-out" iconPos="right"
+                          label="{{'header.logOut' | translate}}"
                           styleClass="p-button-text"></p-button>
               </div>
             </ng-container>

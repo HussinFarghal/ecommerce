@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isUserAdmin: boolean;
   public fullName: string;
   public image: string;
+  public currentLanguage: string;
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -51,14 +52,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isUserLoggedIn = isUserLoggedIn || this._storageService.getLocalStorage('isUserLoggedIn') === 'true';
         this.isUserAdmin = isAdmin || this._storageService.getLocalStorage('isAdmin') === 'true';
       });
-    this.profileMenuModel = this._translationService.instant('header.profileMenu');
-    // this._translationService.stream('header.profileMenu').subscribe(res => {
-    //   this.profileMenuModel = res;
-    // });
-
-    // console.log('this.isUserAdmin', this.isUserAdmin);
-    this.profileMenuModel = this._translationService.instant('header.profileMenu');
-    console.log('this.profileMenuModel', this.profileMenuModel);
+    this._translationService.stream('header.profileMenu').subscribe(res => {
+      this.profileMenuModel = res;
+    });
+    this.currentLanguage = this._translationService.currentLang;
     this.menuItems = [
       {
         label: 'Videos',
@@ -179,6 +176,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public logout() {
     this._authService.logout();
+  }
+
+  changeLanguage(lang: string) {
+    this._translationService.use(lang);
   }
 
   ngOnDestroy(): void {

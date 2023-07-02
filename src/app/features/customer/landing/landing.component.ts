@@ -10,14 +10,5 @@ import { TranslationService } from '../../../core/translation/translation-servic
 export class LandingComponent implements OnInit {
   constructor(private translateService: TranslateService, private _translateService: TranslationService) {}
 
-  ngOnInit(): void {
-    console.log(this.translateService.translations);
-  }
-  switchToEnglish(): void {
-    this.translateService.use('en');
-  }
-
-  switchToArabic(): void {
-    this.translateService.use('ar');
-  }
+  ngOnInit(): void {}
 }
