@@ -1,5 +1,5 @@
 import { TranslateLoader } from '@ngx-translate/core';
-import { TranslationService } from '../../shared/translation-service/translation.service'; // Replace with the correct path
+import { TranslationService } from './translation-service/translation.service'; // Replace with the correct path
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

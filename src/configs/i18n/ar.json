@@ -1,4 +1,33 @@
 {
-  "title": "تجاره",
-  "local": "محلي"
+  "header": {
+    "profileMenu": [
+      {
+        "label": "الخيارات",
+        "icon": "pi pi-cog",
+        "routerLink": [
+          "/settings"
+        ]
+      },
+      {
+        "label": "لوحة التحكم",
+        "icon": "pi pi-key",
+        "routerLink": [
+          "/admin"
+        ]
+      },
+      {
+        "label": "الملف الشخصي",
+        "icon": "pi pi-user",
+        "routerLink": [
+          "/profile"
+        ]
+      }
+    ]
+  },
+  "customer": {
+    "landing": {
+      "title": "Welcome to the Customer Portal"
+    }
+  }
 }
+

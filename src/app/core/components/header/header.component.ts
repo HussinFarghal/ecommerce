@@ -7,6 +7,7 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../features/authentication/auth.service';
 import { combineLatest, Subject, takeUntil } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public image: string;
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private _storageService: StorageService, private _userService: UserService, private _authService: AuthService) {}
+  constructor(
+    private _storageService: StorageService,
+    private _userService: UserService,
+    private _authService: AuthService,
+    private _translationService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.fullName = this._userService.fullName;
@@ -44,32 +50,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.image = image;
         this.isUserLoggedIn = isUserLoggedIn || this._storageService.getLocalStorage('isUserLoggedIn') === 'true';
         this.isUserAdmin = isAdmin || this._storageService.getLocalStorage('isAdmin') === 'true';
-        console.log('fullName', fullName);
-        this.profileMenuModel = [
-          {
-            items: [
-              {
-                label: 'Settings',
-                icon: 'pi pi-cog',
-                routerLink: ['/settings']
-              },
-              {
-                label: 'Admin Panel',
-                icon: 'pi pi-key',
-                routerLink: ['/admin'],
-                visible: this.isUserAdmin
-              },
-              {
-                label: 'Profile',
-                icon: 'pi pi-user',
-                routerLink: ['/profile']
-              }
-            ]
-          }
-        ];
       });
-    // console.log('this.isUserAdmin', this.isUserAdmin);
+    this.profileMenuModel = this._translationService.instant('header.profileMenu');
+    // this._translationService.stream('header.profileMenu').subscribe(res => {
+    //   this.profileMenuModel = res;
+    // });
 
+    // console.log('this.isUserAdmin', this.isUserAdmin);
+    this.profileMenuModel = this._translationService.instant('header.profileMenu');
+    console.log('this.profileMenuModel', this.profileMenuModel);
     this.menuItems = [
       {
         label: 'Videos',

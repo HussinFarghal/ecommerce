@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslationService } from '../../../shared/translation-service/translation.service';
+import { TranslationService } from '../../../core/translation/translation-service/translation.service';
 
 @Component({
   selector: 'app-landing',

@@ -12,7 +12,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { UserService } from './core/services/user/user.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslationLoader } from './core/translation/translation-loader';
-import { TranslationService } from './shared/translation-service/translation.service';
+import { TranslationService } from './core/translation/translation-service/translation.service';
 
 @NgModule({
   declarations: [AppComponent],
