@@ -1,18 +1,28 @@
 @import 'src/styles/_theme-vars.scss';
 @import "src/styles/utils/_functions.scss";
+@import "src/styles/vendors/primeng/themes/variables/_general.scss";
 
-::ng-deep #header {
+:host ::ng-deep #header {
   background-color: $topBarBgColor;
 
-  .menu {
+  .main-nav {
     .p-megamenu-start {
       display: flex;
       align-items: center;
 
       #logo {
+
         width: toRem(35);
         height: toRem(35);
         margin-right: toRem(20);
+      }
+    }
+
+    .p-megamenu-end {
+      #{$rtl} & {
+        margin-left: 0;
+        margin-right: auto;
+        align-self: center;
       }
     }
   }
@@ -23,3 +33,4 @@
     }
   }
 }
+

@@ -14,9 +14,15 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   line-height: 1.30;
+  text-align: start;
   @include media-breakpoint-up(md) {
     line-height: 1.55
   }
+
+  &.rtl {
+    font-weight: $fontWeightLight;
+  }
+
   font-family: $fontFamily;
   font-weight: $fontWeight;
   color: $textColor;
