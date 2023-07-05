@@ -9,7 +9,11 @@
             </a>
           </ng-template>
           <ng-template pTemplate="end">
-            <p-button (click)="changeLanguage(currentLanguage)" label="{{'header.btnLang' | translate}}"
+            <p-button (click)="changeLanguage('ar')" *ngIf="currentLanguage=== 'en'"
+                      label="{{'header.btnLang' | translate}}"
+                      styleClass="p-button p-button-text"></p-button>
+            <p-button (click)="changeLanguage('en')" *ngIf="currentLanguage=== 'ar'"
+                      label="{{'header.btnLang' | translate}}"
                       styleClass="p-button p-button-text"></p-button>
             <ng-container *ngIf="!isUserLoggedIn">
               <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right"

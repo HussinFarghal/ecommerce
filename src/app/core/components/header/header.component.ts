@@ -180,6 +180,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeLanguage(lang: string) {
     this._translationService.use(lang);
+    this.currentLanguage = lang;
+    this.changeDirection(lang === 'ar' ? 'rtl' : 'ltr');
+  }
+
+  changeDirection(dir: string) {
+    document.getElementsByTagName('body')[0].setAttribute('dir', dir);
+    // add class rtl when dir is rtl and ltr when dir is ltr
+    document.getElementsByTagName('body')[0].classList.remove(dir === 'rtl' ? 'ltr' : 'rtl');
+    document.getElementsByTagName('body')[0].classList.add(dir === 'rtl' ? 'rtl' : 'ltr');
   }
 
   ngOnDestroy(): void {
