@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { StorageService } from '../../services/storage/storage.service';
-import { SharedModule } from '../../../shared/shared.module';
+import { StorageService, UserService } from '@core/services/index';
+import { SharedModule } from '@shared/shared.module';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
-import { UserService } from '../../services/user/user.service';
-import { AuthService } from '../../features/authentication/auth.service';
+import { AuthService } from '@core/authentication/auth.service';
 import { combineLatest, Subject, takeUntil } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { DIRECTIONS, LANGUAGES } from '@core/enums/index';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isUserAdmin: boolean;
   public fullName: string;
   public image: string;
-  public currentLanguage: string;
+  public direction: DIRECTIONS;
+  public currentLanguage: LANGUAGES | string;
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -56,6 +57,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.profileMenuModel = res;
     });
     this.currentLanguage = this._translationService.currentLang;
+    this.setDirection(this.currentLanguage);
+    console.log('dir', this.direction);
     this.menuItems = [
       {
         label: 'Videos',
@@ -172,6 +175,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         ]
       }
     ];
+    this._translationService.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLanguage = event.lang;
+      this.setDirection(event.lang === LANGUAGES.AR ? DIRECTIONS.RTL : DIRECTIONS.LTR);
+      console.log('dir', this.direction);
+    });
   }
 
   public logout() {
@@ -181,13 +189,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeLanguage(lang: string) {
     this._translationService.use(lang);
     this.currentLanguage = lang;
-    this.changeDirection(lang === 'ar' ? 'rtl' : 'ltr');
+    this.setDirection(lang === LANGUAGES.AR ? DIRECTIONS.RTL : DIRECTIONS.LTR);
   }
 
-  changeDirection(dir: string) {
+  setDirection(dir: string) {
     document.getElementsByTagName('body')[0].setAttribute('dir', dir);
-    document.getElementsByTagName('body')[0].classList.remove(dir === 'rtl' ? 'ltr' : 'rtl');
-    document.getElementsByTagName('body')[0].classList.add(dir === 'rtl' ? 'rtl' : 'ltr');
+    document.getElementsByTagName('body')[0].classList.remove(dir === DIRECTIONS.RTL ? DIRECTIONS.LTR : DIRECTIONS.RTL);
+    document.getElementsByTagName('body')[0].classList.add(dir === DIRECTIONS.RTL ? DIRECTIONS.RTL : DIRECTIONS.LTR);
+    this.direction = dir === DIRECTIONS.RTL ? DIRECTIONS.RTL : DIRECTIONS.LTR;
   }
 
   ngOnDestroy(): void {

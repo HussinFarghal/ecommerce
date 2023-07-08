@@ -3,6 +3,35 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@core/enums/*": [
+        "src/app/core/enums/*"
+      ],
+      "@core/services/*": [
+        "src/app/core/services/*"
+      ],
+      "@core/models/*": [
+        "src/app/core/models/*"
+      ],
+      "@core/components/*": [
+        "src/app/core/components/*"
+      ],
+      "@core/directives/*": [
+        "src/app/core/directives/*"
+      ],
+      "@core/pipes/*": [
+        "src/app/core/pipes/*"
+      ],
+      "@core/utils/*": [
+        "src/app/core/utils/*"
+      ],
+      "@core/authentication/*": [
+        "src/app/core/features/authentication/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": false,

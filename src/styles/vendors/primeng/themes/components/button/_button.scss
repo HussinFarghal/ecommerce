@@ -89,11 +89,11 @@
   }
 
   .p-button-icon-left {
-    margin-right: $inlineSpacing;
+    margin-inline-end: $inlineSpacing;
   }
 
   .p-button-icon-right {
-    margin-left: $inlineSpacing;
+    margin-inline-start: $inlineSpacing;
   }
 
   .p-button-icon-bottom {

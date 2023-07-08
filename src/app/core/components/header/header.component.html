@@ -11,14 +11,14 @@
           <ng-template pTemplate="end">
             <p-button (click)="changeLanguage('ar')" *ngIf="currentLanguage=== 'en'"
                       label="{{'header.btnLang' | translate}}"
-                      styleClass="p-button p-button-text"></p-button>
+                      styleClass="p-button p-button-text px-1"></p-button>
             <p-button (click)="changeLanguage('en')" *ngIf="currentLanguage=== 'ar'"
                       label="{{'header.btnLang' | translate}}"
-                      styleClass="p-button p-button-text"></p-button>
+                      styleClass="p-button p-button-text px-1"></p-button>
             <ng-container *ngIf="!isUserLoggedIn">
-              <p-button [routerLink]="['auth']" icon="pi pi-sign-in" iconPos="right"
+              <p-button [iconPos]="direction === 'ltr' ? 'right' : 'left'" [routerLink]="['auth']" icon="pi pi-sign-in"
                         label="{{'header.logIn' | translate}}"
-                        styleClass="p-button-text"></p-button>
+                        styleClass="p-button-text px-1"></p-button>
             </ng-container>
             <ng-container *ngIf="isUserLoggedIn">
               <div class="d-flex align-items-center" id="profile-menu">

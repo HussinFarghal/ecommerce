@@ -47,6 +47,7 @@
           }
         ],
         "@angular-eslint/component-class-suffix": "error",
+        "@typescript-eslint/no-shadow": "off",
         "@angular-eslint/directive-class-suffix": "error",
         "@angular-eslint/no-input-rename": "error",
         "@angular-eslint/no-output-on-prefix": "error",
@@ -143,7 +144,7 @@
           }
         ],
         "no-shadow": [
-          "error",
+          "off",
           {
             "hoist": "all"
           }
