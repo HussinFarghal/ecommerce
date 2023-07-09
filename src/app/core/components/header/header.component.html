@@ -9,12 +9,19 @@
             </a>
           </ng-template>
           <ng-template pTemplate="end">
+            <p-toggleButton (click)="changeTheme($event)" [(ngModel)]="checked" offIcon="pi pi-moon" onIcon="pi pi-sun"
+                            styleClass="p-button-text p-button-rounded">
+            </p-toggleButton>
             <p-button (click)="changeLanguage('ar')" *ngIf="currentLanguage=== 'en'"
                       label="{{'header.btnLang' | translate}}"
-                      styleClass="p-button p-button-text px-1"></p-button>
+                      styleClass="p-button p-button-text px-1">
+            </p-button>
             <p-button (click)="changeLanguage('en')" *ngIf="currentLanguage=== 'ar'"
                       label="{{'header.btnLang' | translate}}"
-                      styleClass="p-button p-button-text px-1"></p-button>
+                      styleClass="p-button p-button-text px-1">
+
+            </p-button>
+
             <ng-container *ngIf="!isUserLoggedIn">
               <p-button [iconPos]="direction === 'ltr' ? 'right' : 'left'" [routerLink]="['auth']" icon="pi pi-sign-in"
                         label="{{'header.logIn' | translate}}"

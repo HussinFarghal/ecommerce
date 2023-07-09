@@ -8,12 +8,13 @@ import { AuthService } from '@core/authentication/auth.service';
 import { combineLatest, Subject, takeUntil } from 'rxjs';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { DIRECTIONS, LANGUAGES } from '@core/enums/index';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   providers: [],
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, SharedModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public image: string;
   public direction: DIRECTIONS;
   public currentLanguage: LANGUAGES | string;
+  public checked: boolean;
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -202,5 +204,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  changeTheme(event: Event) {
+    document.getElementsByTagName('body')[0].classList.toggle('light');
+    document.getElementsByTagName('body')[0].classList.toggle('dark');
   }
 }

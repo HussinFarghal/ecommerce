@@ -6,15 +6,9 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { StyleClassModule } from 'primeng/styleclass';
 import { MenuModule } from 'primeng/menu';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
-const primengModules = [
-  MegaMenuModule,
-  InputTextModule,
-  ButtonModule,
-  AvatarModule,
-  StyleClassModule,
-  MenuModule,
-];
+const primengModules = [MegaMenuModule, InputTextModule, ButtonModule, AvatarModule, StyleClassModule, MenuModule, ToggleButtonModule];
 
 @NgModule({
   declarations: [],
