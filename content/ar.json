@@ -1,3 +1,35 @@
 {
-    "title": "من الخارج"
+  "header": {
+    "profileMenu": [
+      {
+        "label": "الخيارات",
+        "icon": "pi pi-cog",
+        "routerLink": [
+          "/settings"
+        ]
+      },
+      {
+        "label": "لوحة التحكم",
+        "icon": "pi pi-key",
+        "routerLink": [
+          "/admin"
+        ]
+      },
+      {
+        "label": "الملف الشخصي",
+        "icon": "pi pi-user",
+        "routerLink": [
+          "/profile"
+        ]
+      }
+    ],
+    "logIn": "دخول",
+    "logOut": "تسجبل خروج",
+    "btnLang": "English"
+  },
+  "customer": {
+    "landing": {
+      "title": "Welcome to the Customer Portal"
+    }
+  }
 }

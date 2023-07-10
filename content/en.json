@@ -1,3 +1,35 @@
 {
-  "title": "fromExternal"
+  "header": {
+    "profileMenu": [
+      {
+        "label": "Settings",
+        "icon": "pi pi-cog",
+        "routerLink": [
+          "/settings"
+        ]
+      },
+      {
+        "label": "Admin Panel",
+        "icon": "pi pi-key",
+        "routerLink": [
+          "/admin"
+        ]
+      },
+      {
+        "label": "Profile",
+        "icon": "pi pi-user",
+        "routerLink": [
+          "/profile"
+        ]
+      }
+    ],
+    "logIn": "Log in",
+    "logOut": "Log out",
+    "btnLang": "عربي"
+  },
+  "customer": {
+    "landing": {
+      "title": "Welcome to the Customer Portal"
+    }
+  }
 }
