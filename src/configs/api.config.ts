@@ -7,5 +7,8 @@ export const API_CONFIG = {
   content: {
     url: (lang: string) =>
       `https://raw.githubusercontent.com/HussinFarghal/ecommerce/master/content/${lang}.json?timestamp=${new Date().getTime()}`
+  },
+  productsCategories: {
+    url: () => `${environment.apiBaseUrl}/products/categories`
   }
 };
