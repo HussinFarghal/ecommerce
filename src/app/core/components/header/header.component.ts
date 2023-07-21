@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StorageService, UserService } from '@core/services/index';
 import { SharedModule } from '@shared/shared.module';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 import { AuthService } from '@core/authentication/auth.service';
 import { combineLatest, Subject, takeUntil } from 'rxjs';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
@@ -20,7 +20,7 @@ import { HeaderService } from '@core/components/header/header.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public menuItems: MegaMenuItem[] = [];
+  public menuItems: any[] = [];
   public profileMenuModel: MenuItem[] = [];
   public isUserLoggedIn: boolean;
   public isUserAdmin: boolean;
@@ -40,6 +40,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this._translationService.get('header.megaMenu').subscribe(res => {
+      console.log(res);
+    });
+
     this.fullName = this._userService.fullName;
     this.image = this._userService.profileImage;
     this.isUserLoggedIn = this._userService.isUserLoggedIn;

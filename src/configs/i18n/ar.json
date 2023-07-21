@@ -23,6 +23,14 @@
         ]
       }
     ],
+    "megaMenu": [
+      {
+        "label": "اجهزة محمول"
+      },
+      {
+        "label": "لاب توب"
+      }
+    ],
     "logIn": "دخول",
     "logOut": "تسجبل خروج",
     "btnLang": "English"
