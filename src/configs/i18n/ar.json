@@ -23,14 +23,10 @@
         ]
       }
     ],
-    "megaMenu": [
-      {
-        "label": "اجهزة محمول"
-      },
-      {
-        "label": "لاب توب"
-      }
-    ],
+    "megaMenu": {
+      "smartphones": "اجهزة محمول",
+      "laptops": "لاب توب"
+    },
     "logIn": "دخول",
     "logOut": "تسجبل خروج",
     "btnLang": "English"
