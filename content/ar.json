@@ -24,8 +24,8 @@
       }
     ],
     "megaMenu": {
-      "smartPhones": "اجهزة محمول",
-      "laptop": "لاب توب"
+      "smartphones": "اجهزة محمول",
+      "laptops": "لاب توب"
     },
     "logIn": "دخول",
     "logOut": "تسجبل خروج",

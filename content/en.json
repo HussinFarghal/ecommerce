@@ -24,8 +24,8 @@
       }
     ],
     "megaMenu": {
-      "smartPhones": "Smart Phones",
-      "laptop": "Laptops"
+      "smartphones": "Smart Phones",
+      "laptops": "Laptops"
     },
     "logIn": "Log in",
     "logOut": "Log out",
