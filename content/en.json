@@ -23,14 +23,10 @@
         ]
       }
     ],
-    "megaMenu": [
-      {
-        "label": "smartphones"
-      },
-      {
-        "label": "laptops"
-      }
-    ],
+    "megaMenu": {
+      "smartPhones": "Smart Phones",
+      "laptop": "Laptops"
+    },
     "logIn": "Log in",
     "logOut": "Log out",
     "btnLang": "عربي"
